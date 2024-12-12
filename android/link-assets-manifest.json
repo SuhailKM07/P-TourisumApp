@@ -1,0 +1,17 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/DancingScript-Bold.ttf",
+      "sha1": "40e545d9cdad467a919c2a38c032bc4fdb69c01f"
+    },
+    {
+      "path": "src/assets/fonts/Montserrat-Medium.ttf",
+      "sha1": "4656e40419da86a5fec473ea8e7fc0efef183f05"
+    },
+    {
+      "path": "src/assets/fonts/RubikDistressed-Regular.ttf",
+      "sha1": "391c6a0e7f3d4d54fb2f07dfa8b9c1cf91dd588d"
+    }
+  ]
+}
