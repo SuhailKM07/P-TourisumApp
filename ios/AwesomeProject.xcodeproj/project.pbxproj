@@ -17,6 +17,8 @@
 		824625C9D657444785251BA3 /* RubikDistressed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5AD3AAEBE0C74848BEC8E931 /* RubikDistressed-Regular.ttf */; };
 		F9878DADA4DF4D0CB24A545A /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F147F614A8E4292B09028DA /* Montserrat-Medium.ttf */; };
 		882FD02DFE38425B8AF51F86 /* DancingScript-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8861D05D1A9F4ABC9F283D27 /* DancingScript-Bold.ttf */; };
+		A28CDF2DF7724736BAE74D70 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1671BA1BBDDB4B0D8E4E8C22 /* Montserrat-Bold.ttf */; };
+		D287A21FA4EC47C1B67BCAA8 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C5143334E4D43F485F004C5 /* Montserrat-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		5AD3AAEBE0C74848BEC8E931 /* RubikDistressed-Regular.ttf */ = {isa = PBXFileReference; name = "RubikDistressed-Regular.ttf"; path = "../src/assets/fonts/RubikDistressed-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		0F147F614A8E4292B09028DA /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; name = "Montserrat-Medium.ttf"; path = "../src/assets/fonts/Montserrat-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		8861D05D1A9F4ABC9F283D27 /* DancingScript-Bold.ttf */ = {isa = PBXFileReference; name = "DancingScript-Bold.ttf"; path = "../src/assets/fonts/DancingScript-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1671BA1BBDDB4B0D8E4E8C22 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; name = "Montserrat-Bold.ttf"; path = "../src/assets/fonts/Montserrat-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9C5143334E4D43F485F004C5 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; name = "Montserrat-SemiBold.ttf"; path = "../src/assets/fonts/Montserrat-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +167,8 @@
 				5AD3AAEBE0C74848BEC8E931 /* RubikDistressed-Regular.ttf */,
 				0F147F614A8E4292B09028DA /* Montserrat-Medium.ttf */,
 				8861D05D1A9F4ABC9F283D27 /* DancingScript-Bold.ttf */,
+				1671BA1BBDDB4B0D8E4E8C22 /* Montserrat-Bold.ttf */,
+				9C5143334E4D43F485F004C5 /* Montserrat-SemiBold.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -266,6 +272,8 @@
 				824625C9D657444785251BA3 /* RubikDistressed-Regular.ttf in Resources */,
 				F9878DADA4DF4D0CB24A545A /* Montserrat-Medium.ttf in Resources */,
 				882FD02DFE38425B8AF51F86 /* DancingScript-Bold.ttf in Resources */,
+				A28CDF2DF7724736BAE74D70 /* Montserrat-Bold.ttf in Resources */,
+				D287A21FA4EC47C1B67BCAA8 /* Montserrat-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

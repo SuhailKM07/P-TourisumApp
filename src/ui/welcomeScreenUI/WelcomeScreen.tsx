@@ -2,8 +2,14 @@ import { ImageBackground, SafeAreaView, StyleSheet, Text, View } from 'react-nat
 import React from 'react'
 import { screenHeight, screenWidth } from '../Dimensions/DimensionsConfig'
 import ButtonComp from '../GlobalComp/ButtonComp'
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../navigation/NavigationTypeCheck';
 
-export default function WelcomeScreen() {
+
+// Define the props for WelcomeScreen
+type WelcomeScreenProps = NativeStackScreenProps<RootStackParamList, 'WelcomeScreen'>;
+
+const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ navigation }) => {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <ImageBackground source={require('../../assets/images/welcomeScreenImg/welcomeBanner.png')} resizeMode="cover" style={{ flex: 1 }}>
@@ -27,11 +33,16 @@ export default function WelcomeScreen() {
                             </Text>
                         </View>
 
-                        <ButtonComp buttonContent={'Explore'} buttonStyle={styles.button} buttonTextStyle={styles.buttonText} />
-
+                        <ButtonComp
+                            buttonContent={'Explore'}
+                            buttonStyle={styles.button}
+                            buttonTextStyle={styles.buttonText}
+                            onPushFun={() => {
+                                navigation.navigate("MyTabs")
+                            }}
+                        />
                     </View>
                 </View>
-
             </ImageBackground>
         </SafeAreaView>
     )
@@ -73,3 +84,5 @@ const styles = StyleSheet.create({
         fontWeight: 500
     }
 })
+
+export default WelcomeScreen
