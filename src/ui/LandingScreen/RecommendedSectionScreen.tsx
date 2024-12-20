@@ -126,15 +126,11 @@ const styles = StyleSheet.create({
   RecommendedSectionMainCompStyle: {
     minHeight: screenHeight * 44,
     justifyContent: 'center',
-    // alignItems: 'center',
-    marginTop: 20,
-    // backgroundColor: 'green'
   },
   RecommendedSectionTextStyle: {
     fontSize: screenWidth * 5,
     fontFamily: 'Montserrat-SemiBold',
     paddingHorizontal: screenWidth * 5,
-    // backgroundColor : 'red'
   },
   FlatListCompStyle: {
     gap: 20,

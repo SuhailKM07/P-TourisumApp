@@ -1,9 +1,10 @@
 import { ImageBackground, SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { screenHeight, screenWidth } from '../Dimensions/DimensionsConfig'
-import ButtonComp from '../GlobalComp/ButtonComp'
+import ButtonComp from '../../GlobalComp/ButtonComp'
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/NavigationTypeCheck';
+import { StatusBar } from 'react-native-basic-elements';
 
 
 // Define the props for WelcomeScreen
@@ -12,6 +13,11 @@ type WelcomeScreenProps = NativeStackScreenProps<RootStackParamList, 'WelcomeScr
 const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ navigation }) => {
     return (
         <SafeAreaView style={{ flex: 1 }}>
+            <StatusBar
+                animated={true}
+                backgroundColor="#194f7d"
+                barStyle = 'light-content'
+            />
             <ImageBackground source={require('../../assets/images/welcomeScreenImg/welcomeBanner.png')} resizeMode="cover" style={{ flex: 1 }}>
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'space-between', padding: 25 }}>
                     <View style={styles.hadderParentTextComp}>
@@ -47,7 +53,6 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ navigation }) => {
         </SafeAreaView>
     )
 }
-
 const styles = StyleSheet.create({
     hadderParentTextComp: {
         height: screenHeight * 30,
@@ -67,7 +72,7 @@ const styles = StyleSheet.create({
     },
 
     bottomParentComp: {
-        height: screenHeight * 32,
+        height: screenHeight * 30,
         gap: 20,
         width: '100%'
     },
@@ -76,7 +81,7 @@ const styles = StyleSheet.create({
         height: screenHeight * 7,
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 15
+        borderRadius: 20
     },
     buttonText: {
         color: 'white',

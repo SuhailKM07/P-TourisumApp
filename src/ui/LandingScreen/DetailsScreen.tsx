@@ -2,9 +2,9 @@ import { ImageBackground, StyleSheet, ScrollView, Text, View, Image, FlatList, I
 import React, { useEffect, useState } from 'react'
 import { screenHeight, screenWidth } from '../Dimensions/DimensionsConfig'
 import { Icon } from 'react-native-basic-elements'
-import ButtonComp from '../GlobalComp/ButtonComp'
+import ButtonComp from '../../GlobalComp/ButtonComp'
 import axios from 'axios'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { NativeStackNavigationProp, NativeStackScreenProps } from '@react-navigation/native-stack'
 
 import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder';
 import LinearGradient from 'react-native-linear-gradient';
@@ -42,7 +42,10 @@ if (
 
 
 // Define the props for WelcomeScreen
-type DetailsScreenProp = NativeStackScreenProps<RootStackParamList, 'DetailsScreen'>;
+interface DetailsScreenProp {
+    navigation: NativeStackNavigationProp<RootStackParamList, 'DetailsScreen'>
+    route: any
+}
 
 const DetailsScreen: React.FC<DetailsScreenProp> = ({ navigation, route }) => {
 
@@ -155,7 +158,7 @@ const DetailsScreen: React.FC<DetailsScreenProp> = ({ navigation, route }) => {
                     </View>
 
                     <View style={styles.HeadderSectionMainStyles}>
-                        <View style={{ width: screenWidth * 50, gap: 4 }}>
+                        <View style={{ width: screenWidth * 50, gap: 15 }}>
                             <ShimmerPlaceholder
                                 height={screenHeight * 2}
                                 width={screenWidth * 40}
@@ -204,7 +207,7 @@ const DetailsScreen: React.FC<DetailsScreenProp> = ({ navigation, route }) => {
                         </ShimmerPlaceholder>
                     </View>
 
-                    <View style={{ gap: 7, paddingHorizontal: screenWidth * 7 }}>
+                    <View style={{ gap: 7, marginTop: 10, paddingHorizontal: screenWidth * 7 }}>
                         <ShimmerPlaceholder
                             height={screenHeight * 2}
                             width={screenWidth * 80}
@@ -230,7 +233,7 @@ const DetailsScreen: React.FC<DetailsScreenProp> = ({ navigation, route }) => {
                             }
                         </Text>
                         }
-                        {isLoadingData ? singleApiResponse?.description?.length || 0 < 150 ?
+                        {isLoadingData ? (singleApiResponse?.description?.length || 0) < 150 ?
                             ''
                             :
                             <TouchableOpacity
@@ -292,7 +295,7 @@ const DetailsScreen: React.FC<DetailsScreenProp> = ({ navigation, route }) => {
                                             style={{ width: screenWidth * 8, height: screenWidth * 8 }}
                                             resizeMode='contain'
                                         />
-                                        <Text style={{ fontSize: screenWidth * 3, textAlign: 'center', color: '#b8b8b8' }}>
+                                        <Text style={{ fontSize: screenWidth * 2.5, textAlign: 'center', color: '#b8b8b8' }}>
                                             {item.title}
                                         </Text>
                                     </View>
@@ -318,7 +321,7 @@ const DetailsScreen: React.FC<DetailsScreenProp> = ({ navigation, route }) => {
                                 style={{ borderRadius: 38, }}
                                 visible={isLoadingData}
                             >
-                                <Text style={{ fontFamily: 'Montserrat-Medium', fontSize: screenWidth * 4 }}>
+                                <Text style={{ fontFamily: 'Montserrat-Medium', fontSize: screenWidth * 3.5, fontWeight: 'bold' }}>
                                     Price
                                 </Text>
                             </ShimmerPlaceholder>
@@ -372,7 +375,7 @@ const DetailsScreen: React.FC<DetailsScreenProp> = ({ navigation, route }) => {
                             Something Went Wrong Try Again !
                         </Text>
                         <Pressable onPress={() => navigation.pop()}>
-                            <Text style = {{color : '#186ff2'}}>
+                            <Text style={{ color: '#186ff2' }}>
                                 Go Back !
                             </Text>
                         </Pressable>
@@ -422,7 +425,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         height: screenHeight * 7,
-        paddingHorizontal: screenWidth * 7
+        paddingHorizontal: screenWidth * 7,
+
     },
     RatingsTextStyles: {
         color: 'gray',
@@ -433,7 +437,8 @@ const styles = StyleSheet.create({
         fontFamily: 'Montserrat-SemiBold',
         color: '#176ff2',
         width: screenWidth * 20,
-        fontSize: screenWidth * 3.5
+        fontSize: screenWidth * 3,
+        marginTop: 10,
     },
     DiscriptionStyles: {
         color: '#3A544F',

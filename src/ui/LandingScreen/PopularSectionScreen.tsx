@@ -95,9 +95,9 @@ export default function PopularSectionScreen(): React.JSX.Element {
                     <Icon
                       name="heart"
                       type="AntDesign"
-                      size={15}
+                      size={13}
                       color={'#ec5655'}
-                      style={{ width: 15 }}
+                      style={{ width: 13 }}
                     />
                   </View>
                 </View>
@@ -124,31 +124,30 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-SemiBold',
   },
   SeeallTextStyle: {
-    fontSize: screenWidth * 3,
+    fontSize: screenWidth * 2.5,
     fontFamily: 'Montserrat-SemiBold',
     color: '#186ef0',
   },
   FlatListContainerStyle: {
     gap: 20,
-    height: screenHeight * 32,
-    alignItems: 'center',
+    height: screenHeight * 36,
     backgroundColor: '#ffffff',
     paddingLeft: screenWidth * 5,
     paddingRight: screenWidth * 5,
+    marginTop : 15,
   },
   MainBgImgStyle: {
-    height: screenHeight * 30,
+    height: screenHeight * 33,
     width: screenWidth * 44,
-    borderRadius: 35,
+    borderRadius: 28,
   },
   BgImgSubMainCon: {
     paddingVertical: 15,
     paddingHorizontal: 15,
-    // backgroundColor: 'red',
     flexDirection: 'row',
     alignItems: 'flex-end',
     justifyContent: 'space-between',
-    height: screenHeight * 29.5,
+    height: screenHeight * 33,
     width: screenWidth * 44,
   },
   TitleTextStyle: {
@@ -179,8 +178,8 @@ const styles = StyleSheet.create({
     fontSize: screenWidth * 2.4
   },
   HeartConStyles: {
-    height: screenWidth * 7,
-    width: screenWidth * 7,
+    height: screenWidth * 5.8,
+    width: screenWidth * 5.8,
     backgroundColor: '#f3f8fe',
     borderRadius: 100,
     justifyContent: 'center',

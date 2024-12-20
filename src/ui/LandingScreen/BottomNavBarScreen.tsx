@@ -19,68 +19,82 @@ function MyTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
 
   return (
     <View
-      style={styles.SupMainCompStyles}>
-      {state.routes.map((route, index) => {
-        const { options } = descriptors[route.key];
-        const label =
-          options.tabBarLabel !== undefined
-            ? options.tabBarLabel
-            : options.title !== undefined
-              ? options.title
-              : route.name;
+      style={{ backgroundColor: 'white', width: '100%' }}
+    >
+      <View
+        style={styles.SupMainCompStyles}>
+        {state.routes.map((route, index) => {
+          const { options } = descriptors[route.key];
+          console.log(options)
 
-        const isFocused = state.index === index;
-        const onPress = () => {
-          const event = navigation.emit({
-            type: 'tabPress',
-            target: route.key,
-            canPreventDefault: true,
-          });
+          const isFocused = state.index === index;
+          const onPress = () => {
+            const event = navigation.emit({
+              type: 'tabPress',
+              target: route.key,
+              canPreventDefault: true,
 
-          if (!isFocused && !event.defaultPrevented) {
-            navigation.navigate(route.name, route.params);
-          }
-        };
+            });
+            console.log(event)
+            if (!isFocused && !event.defaultPrevented) {
+              navigation.navigate(route.name, route.params);
+            }
+          };
 
-        const onLongPress = () => {
-          navigation.emit({
-            type: 'tabLongPress',
-            target: route.key,
-          });
-        };
+          const onLongPress = () => {
+            navigation.emit({
+              type: 'tabLongPress',
+              target: route.key,
+            });
+          };
 
-        return (
-          <PlatformPressable
-            onPress={onPress}
-            onLongPress={onLongPress}
-            style={styles.PlatformPressableMainStyles}
-            key={index}>
-            <Text
-              style={{
-                color: isFocused ? colors.primary : colors.text,
-                margin: 1,
-                textAlign: 'center',
-              }}>
-              <Icon
-                color={isFocused ? colors.primary : colors.text}
-                name={
-                  route.name === 'Home'
-                    ? 'home'
-                    : route.name === 'Profile'
-                      ? 'user'
-                      : route.name === 'Booking'
-                        ? 'book'
-                        : route.name === 'WishList'
-                          ? 'hearto'
-                          : 'info-circle'
-                }
-                type="AntDesign"
-                size={23}
-              />
-            </Text>
-          </PlatformPressable>
-        );
-      })}
+          return (
+            <PlatformPressable
+              onPress={onPress}
+              onLongPress={onLongPress}
+              style={styles.PlatformPressableMainStyles}
+              key={index}>
+              <View
+                style={{
+                  margin: 1,
+                  alignItems: 'center',
+                  justifyContent: 'space-evenly'
+                }}>
+                <Icon
+                  color={isFocused && route.name == 'Home' ? '#FFD700' :
+                    isFocused && route.name == 'Profile' ? '#176ff2' :
+                      isFocused && route.name == 'Booking' ? '#43a55f' :
+                        isFocused && route.name == 'WishList' ? '#ef17d6' : ''
+                  }
+                  name={
+                    route.name === 'Home'
+                      ? 'home'
+                      : route.name === 'Profile'
+                        ? 'user'
+                        : route.name === 'Booking'
+                          ? 'book'
+                          : route.name === 'WishList'
+                            ? 'hearto'
+                            : 'info-circle'
+                  }
+                  type="AntDesign"
+                  size={23}
+                />
+                <Text style={{
+                  color: isFocused && route.name == 'Home' ? '#FFD700' :
+                    isFocused && route.name == 'Profile' ? '#176ff2' :
+                      isFocused && route.name == 'Booking' ? '#43a55f' :
+                        isFocused && route.name == 'WishList' ? '#ef17d6' : ''
+                  ,
+                  fontFamily: 'Montserrat-SemiBold'
+                }}>
+                  {route.name}
+                </Text>
+              </View>
+            </PlatformPressable>
+          );
+        })}
+      </View>
     </View>
   );
 }
@@ -126,8 +140,6 @@ const MyTabs = () => {
         component={ProfileScreen}
         options={{ headerShown: false }}
       />
-
-
     </Tab.Navigator>
   );
 };
@@ -148,10 +160,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    elevation: 2,
-    backgroundColor: 'white',
-    paddingHorizontal: '10%',
+    paddingHorizontal: '5%',
     borderRadius: 40,
+    backgroundColor: 'white',
+    elevation: 2
   }
 });
 

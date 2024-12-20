@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
-import { Icon } from 'react-native-basic-elements'; 
-import { screenHeight, screenWidth } from '../Dimensions/DimensionsConfig';
+import { Icon } from 'react-native-basic-elements';
+import { screenHeight, screenWidth } from '../ui/Dimensions/DimensionsConfig';
 
 // Define the type for dropdown items
 interface DropdownItem {
@@ -28,15 +28,18 @@ const DropdownComponent: React.FC = () => {
       valueField="value"
       value={value}
       placeholder="Aspen, USA"
-      placeholderStyle={{color : '#606060'}}
-      containerStyle = {{borderRadius : 20}}
+      placeholderStyle={{ color: '#606060' }}
+      containerStyle={{ borderRadius: 20 }}
       iconColor='#176FF1'
       onChange={(item: DropdownItem) => {
         setValue(item.value);
       }}
       renderLeftIcon={() => (
-        <Icon style={styles.icon} color="#176FF1" name="location-pin" type='Entypo' size={20} />
+        <Icon style={styles.icon} color="#176ff2" name="location-pin" type='Entypo' size={20} />
 
+      )}
+      renderRightIcon={() => (
+        <Icon style={styles.icon} color="#176ff2" name="angle-down" type='FontAwesome' size={20} />
       )}
     />
   );
@@ -46,8 +49,8 @@ export default DropdownComponent;
 
 const styles = StyleSheet.create({
   dropdown: {
-    height: screenHeight * 4,
-    width : screenWidth * 33,
+    height: screenHeight * 5,
+    width: screenWidth * 33,
     borderRadius: 20,
     padding: 12,
     // backgroundColor : 'green'

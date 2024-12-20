@@ -10,18 +10,18 @@ import {
   ViewStyle,
   TextStyle,
 } from 'react-native';
-import { Icon } from 'react-native-basic-elements';
+import { Icon, StatusBar } from 'react-native-basic-elements';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import PopularSectionScreen from './PopularSectionScreen';
 
 //-----------------------------
-import DropdownComponent from '../GlobalComp/DropdownComponent';
+import DropdownComponent from '../../GlobalComp/DropdownComponent';
 import {
   screenHeight,
   screenWidth,
 } from '../Dimensions/DimensionsConfig';
 import RecommendedSectionScreen from './RecommendedSectionScreen';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { NativeStackNavigationProp, NativeStackScreenProps } from '@react-navigation/native-stack';
 import { BottomNavTypeChecking } from '../../navigation/NavigationTypeCheck';
 
 
@@ -50,7 +50,9 @@ interface DataItem {
 
 
 // Define the props for WelcomeScreen
-type HomeScreenProps = NativeStackScreenProps<BottomNavTypeChecking, 'Home'>;
+interface HomeScreenProps {
+  navigation: NativeStackNavigationProp<BottomNavTypeChecking, 'Home'>
+}
 
 const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const [search, setSearch] = useState('');
@@ -80,10 +82,10 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const [selectedId, setSelectedId] = useState<String | null>('bd7acbea-c1b1-46c2-aed5-3ad53abb28ba');
 
   const renderItem = ({ item }: { item: DataItem }) => {
-    let id = item?.id 
+    let id = item?.id
     console.log(id)
-    const bgColor = id  === selectedId ? '#f3f8fe' : 'white';
-    const color = id  === selectedId ? '#196eee' : '#d2d2d2';
+    const bgColor = id === selectedId ? '#f3f8fe' : 'white';
+    const color = id === selectedId ? '#196eee' : '#d2d2d2';
 
     return (
 
@@ -97,6 +99,10 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   };
   return (
     <SafeAreaView style={{ backgroundColor: 'white', flex: 1 }}>
+      <StatusBar
+        animated={true}
+        backgroundColor="white"
+      />
       <ScrollView
       >
         <View style={styles.container}>
@@ -129,19 +135,22 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
             <View style={styles.searchBar}
             >
               <Icon
-                name="search1"
-                type="AntDesign"
+                name="search"
+                type="Feather"
                 size={23}
                 style={styles.SearchIcon}
+                color={'#b8b8b8'}
               />
               <TextInput
                 style={styles.SearchInput}
                 value={search}
                 placeholder="Find things to do"
+                placeholderTextColor={'#b8b8b8'}
                 onChangeText={text => setSearch(text)}
                 onPress={() => {
                   navigation.navigate('SearchSection')
                 }}
+
               />
             </View>
           </View>
@@ -175,6 +184,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
 
           <View style={{ flex: 1 }}>
             <RecommendedSectionScreen />
+
           </View>
         </View>
       </ScrollView>
@@ -202,7 +212,7 @@ const styles = StyleSheet.create({
   },
   SearchInput: {
     flex: 1,
-    fontSize: 16,
+    fontSize: screenWidth * 3,
     color: '#333',
   },
   NavItemMainCon: {
@@ -229,7 +239,7 @@ const styles = StyleSheet.create({
     // backgroundColor: 'red',
   },
   LogoFirstLineStyle: {
-    fontSize: screenWidth * 4,
+    fontSize: screenWidth * 3.4,
     fontFamily: 'Montserrat-Medium',
   },
   LogoSecondLineStyle: {

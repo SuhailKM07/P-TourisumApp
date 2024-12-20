@@ -3,7 +3,7 @@ import { ParamListBase } from "@react-navigation/native";
 export interface BottomNavTypeChecking extends ParamListBase  {
   Home: undefined;
   Bookings: undefined;
-  WishList: undefined;
+  WishList: {id : number};
   Profile: undefined;
 }
 

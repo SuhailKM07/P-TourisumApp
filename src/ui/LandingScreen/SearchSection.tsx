@@ -4,8 +4,9 @@ import axios from 'axios';
 import { screenHeight, screenWidth, windowHeight } from '../Dimensions/DimensionsConfig';
 import { Icon } from 'react-native-basic-elements';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { NativeStackNavigationProp, NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/NavigationTypeCheck';
+import Snackbar from 'react-native-snackbar';
 
 
 export interface Welcome {
@@ -24,10 +25,12 @@ export interface Rating {
 }
 
 
-type SearchSectionScreenProps = NativeStackScreenProps<RootStackParamList, 'SearchSection'>;
+interface SearchSectionScreenProps {
+    navigation: NativeStackNavigationProp<RootStackParamList, 'SearchSection'>
+}
 
 
-const SearchSection: React.FC<SearchSectionScreenProps> = ({ route, navigation }) => {
+const SearchSection: React.FC<SearchSectionScreenProps> = ({ navigation }) => {
 
     const [apiResponse, setApiResponse] = useState<Welcome[]>([]);
     const [filterSearch, setFilterSearch] = useState('')
@@ -80,6 +83,12 @@ const SearchSection: React.FC<SearchSectionScreenProps> = ({ route, navigation }
 
             const pars = JSON.stringify(wishListIds);
             await AsyncStorage.setItem('WishListid', pars);
+
+            Snackbar.show({
+                text: 'Item Added Successfully in Wishlist !',
+                duration: Snackbar.LENGTH_LONG,
+                textColor  : 'green'
+            });
 
         } catch (error) {
             console.error('Error in registerWishlistItem:', error);
@@ -192,49 +201,53 @@ const SearchSection: React.FC<SearchSectionScreenProps> = ({ route, navigation }
                                                 imageStyle={styles.MainBgImgStyles}>
                                                 <View
                                                     style={styles.MainBgImgSubCompStyles}>
-                                                    <View
-                                                        style={{ backgroundColor: 'white', padding: 3, borderRadius: 50 }}>
+                                                    <Pressable
+                                                        onPress={() => {
+                                                            registerWishlistItem(item.id)
+                                                        }}
+                                                    >
                                                         <View
-                                                            style={styles.HeartIconCompStyle}
-                                                        >
-                                                            <Icon
-                                                                name="heart"
-                                                                type="AntDesign"
-                                                                size={15}
-                                                                color={'#ec5655'}
-                                                                style={{ width: 15 }}
-                                                                onPress={() => {
-                                                                    registerWishlistItem(item.id)
-                                                                }}
-                                                            />
+                                                            style={{ backgroundColor: 'white', padding: 3, borderRadius: 50 }}>
+                                                            <View
+                                                                style={styles.HeartIconCompStyle}
+                                                            >
+                                                                <Icon
+                                                                    name="heart"
+                                                                    type="AntDesign"
+                                                                    size={15}
+                                                                    color={'#ec5655'}
+                                                                    style={{ width: 15 }}
+
+                                                                />
+                                                            </View>
                                                         </View>
-                                                    </View>
+                                                    </Pressable>
                                                 </View>
                                             </ImageBackground>
 
                                             <View style={{ marginTop: screenWidth * 2 }}>
-                                                <Text 
-                                                numberOfLines={1}
-                                                ellipsizeMode='tail'
-                                                style={{
-                                                    fontFamily: 'Montserrat-SemiBold',
-                                                    fontSize: screenWidth * 4,
-                                                    // backgroundColor: 'yellow'
-                                                }}>
+                                                <Text
+                                                    numberOfLines={1}
+                                                    ellipsizeMode='tail'
+                                                    style={{
+                                                        fontFamily: 'Montserrat-SemiBold',
+                                                        fontSize: screenWidth * 4,
+                                                        // backgroundColor: 'yellow'
+                                                    }}>
                                                     {
-                                                            item.title 
+                                                        item.title
                                                     }
                                                 </Text>
-                                                <Text 
-                                                numberOfLines={5}
-                                                ellipsizeMode='tail'
-                                                style={{
-                                                    fontFamily: 'Montserrat-Medium',
-                                                    fontSize: screenWidth * 3,
-                                                    // backgroundColor: 'gray'
-                                                }}>
+                                                <Text
+                                                    numberOfLines={5}
+                                                    ellipsizeMode='tail'
+                                                    style={{
+                                                        fontFamily: 'Montserrat-Medium',
+                                                        fontSize: screenWidth * 3,
+                                                        // backgroundColor: 'gray'
+                                                    }}>
                                                     {
-                                                            item.description
+                                                        item.description
                                                     }
                                                 </Text>
                                             </View>
@@ -296,7 +309,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginHorizontal: screenWidth * 2,
         borderRadius: 25,
-        height : screenHeight * 35
+        height: screenHeight * 35
     },
     MainBgImgStyles: {
         height: screenHeight * 15,
